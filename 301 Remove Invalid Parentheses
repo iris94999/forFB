@@ -1,3 +1,7 @@
+// To generate one node it requires O(n) time from the string concatenation among other things. 
+// So roughly O(nk). Accurately O(nm) where m is the total "number of recursive calls" or "nodes in the search tree". 
+// Then you need to relate m to n in the worst case.
+
 public List<String> removeInvalidParentheses(String s) {
         List<String> res = new ArrayList<>();
 	removeHelper(s, res, 0, 0, '(', ')');
