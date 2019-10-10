@@ -1,29 +1,29 @@
 public List<String> removeInvalidParentheses(String s) {
-		List<String> res = new ArrayList<>();
-		removeHelper(s, res, 0, 0, '(', ')');
+        List<String> res = new ArrayList<>();
+	removeHelper(s, res, 0, 0, '(', ')');
 		
 }
 public void removeHelper(String s, List<String> res, int iStart, int jStart, char open, char close){
-		int openNum = 0;
-		int closeNum = 0;
-		for(int i = iStart; i < s.length(); i++){
-				if(s.charAt(i) == open) openNum++;
-				if(s.charAt(i) == close) closeNum++;
-				if(closeNum > openNum){
-						for(j = jStart; j <= i; j++){
-								if(s.charAt(j) == close && (j == jStart || s.charAt(j - 1) != close)){
-										removeHelper(s.substring(0, j) + s.substring(j + 1), res, i, j, open, close);
-								}
-						}
-						return;
-				}		
-		}
+	int openNum = 0;
+	int closeNum = 0;
+	for(int i = iStart; i < s.length(); i++){
+                if(s.charAt(i) == open) openNum++;
+                if(s.charAt(i) == close) closeNum++;
+                if(closeNum > openNum){
+                        for(j = jStart; j <= i; j++){
+                                if(s.charAt(j) == close && (j == jStart || s.charAt(j - 1) != close)){
+                                        removeHelper(s.substring(0, j) + s.substring(j + 1), res, i, j, open, close);
+                                }
+                        }
+                        return;
+                }		
+	}
 		
-		String reversed = new StringBuilder(s).reverse().toString();
-		if(open == '('){
-				removeHelper(reversed, res, 0, 0, '(', ')');
-		}
-		else{
-				res.add(reversed);
-		}
+        String reversed = new StringBuilder(s).reverse().toString();
+        if(open == '('){
+                removeHelper(reversed, res, 0, 0, '(', ')');
+        }
+        else{
+                res.add(reversed);
+        }
 }
