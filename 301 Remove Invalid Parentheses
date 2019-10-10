@@ -25,7 +25,7 @@ public void removeHelper(String s, List<String> res, int iStart, int jStart, cha
 		
         String reversed = new StringBuilder(s).reverse().toString();
         if(open == '('){
-                removeHelper(reversed, res, 0, 0, '(', ')');
+                removeHelper(reversed, res, 0, 0, ')', '(');
         }
         else{
                 res.add(reversed);
