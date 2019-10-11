@@ -1,0 +1,25 @@
+public class Solution extends Reader4 {
+	private char[] buff = new char[4];
+	private int buffP = 0;
+	private int buffC = 0;
+	
+	public int read(char[] buf, int n){
+		int p = 0;
+		while(p < n){
+			if(buffP == 0){
+				buffC = read4(buff);
+			}
+			// when met the end of file
+			if(buffC == 0) break;
+			
+			// copy to buf from buff;
+			while(p < n && buffP < buffC){
+				buf[p++] = buff[buffP++];
+			}
+			
+			// reinitial buff pointer;
+			if(buffP >= buffC) buffP = 0;
+		}
+		return p;
+	}
+}
